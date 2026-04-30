@@ -483,7 +483,11 @@ function renderDone() {
     +'</div></div>');
 }
 
-document.addEventListener("DOMContentLoaded", function(){ renderWelcome(); });
+if (document.readyState === 'loading') {
+  document.addEventListener("DOMContentLoaded", renderWelcome);
+} else {
+  renderWelcome();
+}
 </script>
 </body>
 </html>
