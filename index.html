@@ -2,216 +2,488 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ta Place, Ton Histoire, Ta Lumière</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--foret:#2B544E;--lilas:#6B3785;--brique:#7D2A12;--ciel:#A8BCF6;--soleil:#DF9C6A;--bg:#090C0B;--sur:rgba(255,255,255,0.04);--bdr:rgba(255,255,255,0.09);--txt:#F0EBE3;--muted:#8A857F}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 15% 25%,rgba(43,84,78,.3) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 85% 75%,rgba(107,55,133,.22) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 15%,rgba(125,42,18,.12) 0%,transparent 50%)}
-.app{max-width:680px;margin:0 auto;padding:0 1.5rem 5rem;position:relative;z-index:1}
-.pw{position:sticky;top:0;z-index:100;padding:1.25rem 0 .5rem;background:linear-gradient(to bottom,var(--bg) 65%,transparent)}
-.pm{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px;letter-spacing:.04em}
-.pt{height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
-.pf{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--foret),var(--lilas),var(--ciel));transition:width .6s}
-.sc{animation:ap .45s ease both}
-@keyframes ap{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.card{background:var(--sur);border:1px solid var(--bdr);border-radius:24px;padding:2.5rem;backdrop-filter:blur(16px)}
-.ey{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--soleil);margin-bottom:1.25rem;opacity:.85;text-align:center}
-.ht{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:300;line-height:1.08;background:linear-gradient(140deg,var(--ciel) 0%,var(--soleil) 40%,var(--lilas) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2rem;padding-top:3rem;text-align:center}
-.iq{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--ciel);line-height:1.65;margin-bottom:1.5rem;border-left:2px solid var(--ciel);padding-left:1.25rem;opacity:.9}
-.pa{color:var(--muted);line-height:1.85;font-size:.95rem;margin-bottom:1rem}
-.fl{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soleil);margin-bottom:10px}
-.ti{width:100%;background:var(--sur);border:1px solid var(--bdr);border-radius:14px;padding:1rem 1.25rem;color:var(--txt);font-size:1rem;font-family:'Inter',sans-serif;outline:none;margin-bottom:2rem;transition:border-color .25s,box-shadow .25s}
-.ti:focus{border-color:var(--lilas);box-shadow:0 0 0 3px rgba(107,55,133,.15)}
-.ti::placeholder{color:rgba(255,255,255,.2);font-style:italic}
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.75rem;margin-bottom:.5rem}
-.pb{background:var(--sur);border:1px solid var(--bdr);border-radius:16px;padding:1.1rem 1rem;cursor:pointer;text-align:center;transition:all .2s;color:var(--txt);font-family:'Inter',sans-serif}
-.pb:hover{border-color:rgba(107,55,133,.5);background:rgba(107,55,133,.1);transform:translateY(-2px)}
-.pb.sel{border-color:var(--lilas);background:rgba(107,55,133,.18);box-shadow:0 0 0 1px var(--lilas),0 6px 24px rgba(107,55,133,.25)}
-.pi{font-size:1.6rem;margin-bottom:.35rem}
-.pn{font-size:.85rem;font-weight:500}
-.qm{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--lilas);margin-bottom:1.75rem}
-.ql{flex:1;height:1px;background:linear-gradient(90deg,var(--lilas),transparent);opacity:.35}
-.qb{font-size:11px;padding:.3rem .75rem;border-radius:50px;letter-spacing:.1em}
-.qt{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.8vw,1.7rem);font-weight:400;line-height:1.45;color:var(--txt);margin-bottom:2rem}
-.at{width:100%;background:rgba(255,255,255,.025);border:1px solid var(--bdr);border-radius:16px;padding:1.25rem;color:var(--txt);font-size:.95rem;font-family:'Inter',sans-serif;line-height:1.75;resize:vertical;min-height:150px;outline:none;transition:border-color .3s,box-shadow .3s}
-.at:focus{border-color:var(--ciel);box-shadow:0 0 0 3px rgba(168,188,246,.1)}
-.at::placeholder{color:rgba(255,255,255,.15);font-style:italic}
-.tw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
-.wi{background:rgba(255,255,255,.025);border:1px solid var(--bdr);border-radius:12px;padding:1rem .75rem;color:var(--txt);font-size:.95rem;font-family:'Inter',sans-serif;outline:none;text-align:center;transition:border-color .3s;width:100%}
-.wi:focus{border-color:var(--soleil);box-shadow:0 0 0 3px rgba(223,156,106,.12)}
-.wi::placeholder{color:rgba(255,255,255,.18);font-style:italic}
-.nr{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.5rem}
-.btn{padding:.875rem 2rem;border-radius:50px;font-size:.88rem;font-family:'Inter',sans-serif;font-weight:500;cursor:pointer;outline:none;transition:all .25s;letter-spacing:.02em}
-.bb{background:transparent;color:var(--muted);border:1px solid var(--bdr)}
-.bb:hover{border-color:rgba(255,255,255,.2);color:var(--txt)}
-.bn{background:linear-gradient(135deg,var(--lilas),#9B5BBD);color:#fff;border:none}
-.bn:hover,.bp:hover,.bs:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(107,55,133,.45)}
-.bp,.bs{background:linear-gradient(135deg,var(--foret),var(--lilas));color:#fff;border:none;border-radius:14px;font-family:'Inter',sans-serif;font-weight:500;cursor:pointer;transition:all .25s}
-.bp{padding:1rem 2.5rem;font-size:.95rem;display:block;width:100%;margin-top:1.5rem;text-align:center;letter-spacing:.02em}
-.bs{padding:.875rem 2.25rem;font-size:.88rem;letter-spacing:.02em}
-.sh{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:.5rem}
-.eh{font-size:13px;color:var(--soleil);margin-bottom:1rem;display:none}
-.ic{background:var(--sur);border:1px solid var(--bdr);border-left:3px solid var(--soleil);border-radius:20px;padding:2rem 2rem 2rem 2.25rem;margin-top:1.5rem}
-.il{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soleil);margin-bottom:1rem}
-.iq2{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--txt);line-height:1.7}
-@media(max-width:560px){.card{padding:1.75rem 1.5rem}.pg{grid-template-columns:repeat(2,1fr)}.tw{grid-template-columns:1fr}}
+:root{--foret:#2B544E;--lilas:#6B3785;--ciel:#A8BCF6;--soleil:#DF9C6A;--bg:#090C0B;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:#F0EBE3;font-family:'Inter',sans-serif;min-height:100vh;position:relative;isolation:isolate;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 15% 25%,rgba(43,84,78,.3) 0%,transparent 60%),
+  radial-gradient(ellipse 50% 60% at 85% 75%,rgba(107,55,133,.22) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 80% 15%,rgba(125,42,18,.12) 0%,transparent 50%);}
+.wrap{max-width:680px;margin:0 auto;padding:0 1.5rem 5rem;position:relative;z-index:1;}
+.prog{position:sticky;top:0;z-index:100;padding:1.25rem 0 .5rem;
+  background:linear-gradient(to bottom,var(--bg) 65%,transparent);display:none;}
+.prog-meta{display:flex;justify-content:space-between;font-size:12px;color:#8A857F;margin-bottom:8px;}
+.prog-track{height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--foret),var(--lilas),var(--ciel));transition:width .6s;}
+.screen{padding-top:2rem;animation:ap .4s ease;}
+@keyframes ap{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;padding:2.5rem;backdrop-filter:blur(16px);}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--soleil);
+  margin-bottom:1.25rem;opacity:.85;text-align:center;}
+.hero{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:300;
+  line-height:1.08;background:linear-gradient(140deg,var(--ciel) 0%,var(--soleil) 40%,var(--lilas) 80%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:2rem;padding-top:3rem;text-align:center;}
+.iq{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--ciel);
+  line-height:1.65;margin-bottom:1.5rem;border-left:2px solid var(--ciel);padding-left:1.25rem;opacity:.9;}
+.para{color:#8A857F;line-height:1.85;font-size:.95rem;margin-bottom:1rem;}
+.lbl{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soleil);margin-bottom:10px;}
+.txt-in{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:14px;padding:1rem 1.25rem;color:#F0EBE3;font-size:1rem;font-family:'Inter',sans-serif;
+  outline:none;margin-bottom:2rem;transition:border-color .25s;}
+.txt-in:focus{border-color:var(--lilas);box-shadow:0 0 0 3px rgba(107,55,133,.15);}
+.txt-in::placeholder{color:rgba(255,255,255,.2);font-style:italic;}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.75rem;margin-bottom:.5rem;}
+.pbtn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;
+  padding:1.1rem 1rem;cursor:pointer;text-align:center;transition:all .2s;color:#F0EBE3;font-family:'Inter',sans-serif;}
+.pbtn:hover{border-color:rgba(107,55,133,.5);background:rgba(107,55,133,.1);transform:translateY(-2px);}
+.pbtn.on{border-color:var(--lilas);background:rgba(107,55,133,.18);
+  box-shadow:0 0 0 1px var(--lilas),0 6px 24px rgba(107,55,133,.25);}
+.pi{font-size:1.6rem;margin-bottom:.35rem;} .pn{font-size:.85rem;font-weight:500;}
+.qmeta{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--lilas);margin-bottom:1.75rem;}
+.qline{flex:1;height:1px;background:linear-gradient(90deg,var(--lilas),transparent);opacity:.35;}
+.qbadge{font-size:11px;padding:.3rem .75rem;border-radius:50px;letter-spacing:.1em;}
+.qtext{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.8vw,1.7rem);
+  font-weight:400;line-height:1.45;color:#F0EBE3;margin-bottom:2rem;}
+.ata{width:100%;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.09);
+  border-radius:16px;padding:1.25rem;color:#F0EBE3;font-size:.95rem;font-family:'Inter',sans-serif;
+  line-height:1.75;resize:vertical;min-height:150px;outline:none;transition:border-color .3s;}
+.ata:focus{border-color:var(--ciel);box-shadow:0 0 0 3px rgba(168,188,246,.1);}
+.ata::placeholder{color:rgba(255,255,255,.15);font-style:italic;}
+.thr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;}
+.win{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.09);border-radius:12px;
+  padding:1rem .75rem;color:#F0EBE3;font-size:.95rem;font-family:'Inter',sans-serif;
+  outline:none;text-align:center;transition:border-color .3s;width:100%;}
+.win:focus{border-color:var(--soleil);box-shadow:0 0 0 3px rgba(223,156,106,.12);}
+.win::placeholder{color:rgba(255,255,255,.18);font-style:italic;}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.5rem;}
+.bback{padding:.875rem 1.75rem;border-radius:50px;font-size:.88rem;font-family:'Inter',sans-serif;
+  font-weight:500;cursor:pointer;background:transparent;color:#8A857F;
+  border:1px solid rgba(255,255,255,.09);transition:all .25s;}
+.bback:hover{border-color:rgba(255,255,255,.2);color:#F0EBE3;}
+.bnext{padding:.875rem 2.25rem;border-radius:50px;font-size:.88rem;font-family:'Inter',sans-serif;
+  font-weight:500;cursor:pointer;background:linear-gradient(135deg,var(--lilas),#9B5BBD);
+  color:#fff;border:none;transition:all .25s;}
+.bnext:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(107,55,133,.45);}
+.bprim{padding:1rem 2.5rem;font-size:.95rem;font-family:'Inter',sans-serif;font-weight:500;
+  cursor:pointer;background:linear-gradient(135deg,var(--foret),var(--lilas));color:#fff;
+  border:none;border-radius:14px;display:block;width:100%;margin-top:1.5rem;
+  text-align:center;transition:all .25s;}
+.bprim:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(43,84,78,.35);}
+.bsub{padding:.875rem 2.25rem;font-size:.88rem;font-family:'Inter',sans-serif;font-weight:500;
+  cursor:pointer;background:linear-gradient(135deg,var(--foret),var(--lilas));color:#fff;
+  border:none;border-radius:14px;transition:all .25s;}
+.bsub:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(43,84,78,.45);}
+.bsub:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.sh{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:.5rem;}
+.errhint{font-size:13px;color:var(--soleil);margin-bottom:1rem;display:none;}
+.ferr{font-size:13px;color:var(--soleil);margin-top:.75rem;display:none;}
+.insp{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-left:3px solid var(--soleil);border-radius:20px;padding:2rem 2rem 2rem 2.25rem;margin-top:1.5rem;}
+.insplbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soleil);margin-bottom:1rem;}
+.inspq{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:#F0EBE3;line-height:1.7;}
+.tytitle{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;
+  background:linear-gradient(135deg,var(--ciel),var(--soleil));-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.25rem;text-align:center;}
+@media(max-width:560px){.card{padding:1.75rem 1.5rem}.pgrid{grid-template-columns:repeat(2,1fr)}.thr{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="app" id="app"></div>
+<div class="wrap">
+  <div id="prog" class="prog">
+    <div class="prog-meta"><span id="plbl"></span><span id="ppct"></span></div>
+    <div class="prog-track"><div id="pfill" class="prog-fill" style="width:0%"></div></div>
+  </div>
+  <div id="app"></div>
+</div>
 <script>
-var WEB3FORMS_KEY='YOUR_ACCESS_KEY_HERE';
-var PROFILES=[{"id":"grande-soeur","label":"Grande Sœur","emoji":"👩","msg":"Tu as porté beaucoup. Et tout ce que tu as donné aux autres ne t'a pas été volé : ça t'a appris une profondeur que peu de gens ont."},{"id":"grand-frere","label":"Grand Frère","emoji":"🧑","msg":"Être lisible n'est pas une obligation. Mais être sincère avec toi-même, c'est ta liberté la plus puissante."},{"id":"fille-milieu","label":"Fille du Milieu","emoji":"🌸","msg":"Ta place n'était pas évidente, mais tu l'as créée. Ça, c'est une force rare."},{"id":"garcon-milieu","label":"Garçon du Milieu","emoji":"🌿","msg":"Ce que tu as construit seul, sans bruit, sans podium, c'est peut-être la chose la plus solide de toi."},{"id":"petite-soeur","label":"Petite Sœur","emoji":"🌙","msg":"Tu n'es pas la dernière, tu es l'aboutissement. Et tu as encore tout à écrire."},{"id":"petit-frere","label":"Petit Frère","emoji":"⚡","msg":"Dans un monde sans boussole, tu as appris à en fabriquer une. C'est ça, être un bâtisseur."},{"id":"fils-unique","label":"Fils Unique","emoji":"🌊","msg":"La profondeur que tu as développée dans le silence et la solitude, elle n'attend que d'être partagée avec le monde."},{"id":"fille-unique","label":"Fille Unique","emoji":"✨","msg":"Tu as grandi sous une lumière intense. Maintenant tu apprends à te réchauffer aussi à ta propre flamme."},{"id":"jumeaux","label":"Jumeaux","emoji":"👯","msg":"Vous avez commencé à deux. Mais chacun de vous est un univers complet. Les deux peuvent coexister."},{"id":"jumelles","label":"Jumelles","emoji":"👯","msg":"Vous avez commencé à deux. Mais chacune de vous est un univers complet. Les deux peuvent coexister."},{"id":"cas-particulier","label":"Cas Particulier","emoji":"🌟","msg":"Ton histoire est complexe. Et cette complexité n'est pas un défaut : c'est la richesse de ta singularité."}];
-var COMMON_OPENING=[{"id":"co1","section":"Ouverture","type":"textarea","text":"Si tu devais choisir une image, une couleur ou un son qui représente comment tu te sens dans ta famille en ce moment, ce serait quoi ?","placeholder":"Prends le temps qu'il te faut... il n'y a pas de bonne réponse."},{"id":"co2","section":"Ouverture","type":"three-words","text":"Quand tu penses à toi, pas à ton rôle ni à ce qu'on attend de toi... juste toi. Tu te décrirais en trois mots ?","placeholder":""},{"id":"co3","section":"Ouverture","type":"textarea","text":"Est-ce qu'il y a une version de toi que tu montres à ta famille, et une autre que tu gardes pour toi ? Laquelle tu préfères et pourquoi ?","placeholder":"Explore librement..."},{"id":"co4","section":"Ouverture","type":"textarea","text":"C'est quoi le moment de la semaine où tu te sens le plus toi-même, complètement libre ?","placeholder":"Décris ce moment..."}];
-var COMMON_CLOSING=[{"id":"cc1","section":"Cloture","type":"textarea","text":"C'est quoi une force en toi que tu n'utilises pas encore assez, et que tu voudrais développer ?","placeholder":"Prends le temps d'y penser..."},{"id":"cc2","section":"Cloture","type":"textarea","text":"Si cette conversation t'a mis(e) en lumière sur quelque chose, c'est quoi ? Une seule chose.","placeholder":"Même une petite chose compte..."},{"id":"cc3","section":"Cloture","type":"textarea","text":"Si ta vie était un livre en cours d'écriture, qu'est-ce que tu aimerais qu'on lise dans le prochain chapitre ?","placeholder":"Écris le titre de ce chapitre si tu veux..."}];
-var PROFILE_QUESTIONS={"grande-soeur":[{"id":"gs1","type":"textarea","text":"Est-ce qu'il y a des attentes que tu portais sur toi dont tu ne savais pas vraiment d'où elles venaient ? Comment tu les as vécues intérieurement ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs2","type":"textarea","text":"À quel moment précis tu as décidé, consciemment ou non, de prendre soin de toi, pas seulement des autres ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs3","type":"textarea","text":"Est-ce qu'il t'est arrivé de te sentir seule dans ta position, d'avoir eu besoin qu'on s'occupe aussi de toi sans oser le dire ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs4","type":"textarea","text":"Comment tu décris la frontière, dans ta vie, entre 'aimer et protéger' et 's'oublier soi-même' ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs5","type":"textarea","text":"Est-ce qu'il y a quelque chose que tu as porté silencieusement pendant des années et qui méritait d'être dit à voix haute ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs6","type":"textarea","text":"Comment tu te définis en dehors de ton rôle dans la famille ? C'est quoi ce que tu construis pour toi seule ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs7","type":"textarea","text":"Est-ce que tu as parfois ressenti une forme de pression invisible liée au fait d'être l'aînée ? Comment tu l'as gérée ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs8","type":"textarea","text":"Qu'est-ce que ta position t'a appris sur toi que tu n'aurais pas appris autrement ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs9","type":"textarea","text":"Est-ce qu'il t'est arrivé d'envier une légèreté que tu voyais chez d'autres sans porter ce que tu portais ? Comment tu as vécu ça ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gs10","type":"textarea","text":"Si tu pouvais te parler à toi-même à 10 ans, qu'est-ce que tu te dirais pour alléger ce chemin ?","placeholder":"Prends le temps qu'il te faut..."}],"grand-frere":[{"id":"gb1","type":"textarea","text":"C'est quoi pour toi être un grand frère dans un monde où les modèles masculins sont souvent flous ou absents ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb2","type":"textarea","text":"Est-ce qu'il y a des choses que tu as dû apprendre seul, sans vraiment avoir quelqu'un à qui demander ? Comment tu t'en es sorti ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb3","type":"textarea","text":"Est-ce que la force, pour toi, ça a toujours été quelque chose de visible ? Ou est-ce que tu as découvert d'autres formes de force en toi avec le temps ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb4","type":"textarea","text":"Qu'est-ce que tu aurais voulu qu'on te dise plus souvent, qu'on ne t'a jamais dit ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb5","type":"textarea","text":"Est-ce qu'il y a eu un moment où tu t'es senti incompris dans ce que tu vivais, et où tu as dû faire semblant que ça allait ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb6","type":"textarea","text":"Comment tu as construit tes propres repères quand les modèles autour de toi n'étaient pas lisibles ou absents ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb7","type":"textarea","text":"Est-ce qu'il t'est arrivé de douter de ta place, de te demander si tu faisais les choses comme il fallait ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb8","type":"textarea","text":"Qu'est-ce que tu as appris sur la vulnérabilité, sur le fait d'accepter de ne pas avoir toutes les réponses ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb9","type":"textarea","text":"Est-ce que le fait d'être l'aîné a parfois pesé sur ta liberté, sur les choix que tu as faits ou ceux que tu n'as pas osé faire ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gb10","type":"textarea","text":"Comment tu imagines la version de toi dans 10 ans, débarrassée de toutes les pressions extérieures ?","placeholder":"Prends le temps qu'il te faut..."}],"fille-milieu":[{"id":"fm1","type":"textarea","text":"Est-ce que tu as parfois eu l'impression d'avoir dû inventer ta place plutôt que de la trouver naturellement ? Comment tu as fait ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm2","type":"textarea","text":"Est-ce qu'il t'est arrivé de te sentir invisible dans ta famille ? Si oui, comment tu y as répondu ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm3","type":"textarea","text":"Quelles sont les qualités que tu as développées que tu penses uniques à ta position et dont tu es fière ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm4","type":"textarea","text":"Où est-ce que tu puises ta stabilité intérieure quand tu te sens entre deux mondes ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm5","type":"textarea","text":"Est-ce que tu as souvent joué un rôle de médiatrice ou de pacificatrice ? Comment tu as vécu ce rôle ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm6","type":"textarea","text":"Est-ce qu'il y a quelque chose que tu aurais voulu que les gens autour de toi voient en toi, sans que tu aies besoin de le montrer toi-même ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm7","type":"textarea","text":"Comment tu fais la distinction entre ce que tu ressens vraiment et ce que tu crois devoir ressentir pour maintenir l'harmonie ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm8","type":"textarea","text":"Est-ce qu'il y a un domaine de ta vie où tu t'es vraiment affirmée, où tu as dit : ici, c'est moi, c'est mon espace ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm9","type":"textarea","text":"Est-ce que ta position dans la fratrie t'a appris quelque chose sur l'adaptation, sur la flexibilité ? Comment tu le vis maintenant ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fm10","type":"textarea","text":"Si tu pouvais changer une seule chose de comment tu as été perçue dans ta famille, ce serait quoi ?","placeholder":"Prends le temps qu'il te faut..."}],"garcon-milieu":[{"id":"gm1","type":"textarea","text":"Comment tu as trouvé ton espace à toi dans la famille, quelque chose qui n'appartient qu'à toi ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm2","type":"textarea","text":"Est-ce que tu as eu l'impression de devoir te battre pour être entendu ? Si oui, qu'est-ce que ça t'a appris ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm3","type":"textarea","text":"Est-ce qu'il y a une façon dont tu t'es défini que les gens autour de toi n'avaient pas encore vue, une surprise que tu leur as faite ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm4","type":"textarea","text":"C'est quoi ta définition personnelle du succès, indépendamment du regard des autres ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm5","type":"textarea","text":"Est-ce qu'il t'est arrivé de te sentir coincé entre des attentes contradictoires venant de différents côtés ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm6","type":"textarea","text":"Comment tu as appris à tenir ta propre ligne dans un espace où il fallait souvent négocier sa place ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm7","type":"textarea","text":"Est-ce qu'il y a une partie de toi qui a mis du temps à s'exprimer, un talent, une passion, une pensée que tu as longtemps gardée pour toi ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm8","type":"textarea","text":"Comment tu vis la relation avec toi-même, loin des dynamiques familiales ? Tu te connais bien ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm9","type":"textarea","text":"Est-ce que ta position t'a rendu plus empathique, plus à l'écoute des autres ? Comment tu le vis ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"gm10","type":"textarea","text":"C'est quoi une chose que tu ferais différemment si tu pouvais revivre une période de ta vie familiale ?","placeholder":"Prends le temps qu'il te faut..."}],"petite-soeur":[{"id":"ps1","type":"textarea","text":"Est-ce que tu as souvent eu envie de te prouver quelque chose, pas aux autres, mais à toi-même ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps2","type":"textarea","text":"Quand tu penses à l'avenir, est-ce que tu te projettes librement, ou est-ce que tu te sens parfois dans un sillage tracé par d'autres avant toi ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps3","type":"textarea","text":"Est-ce qu'il y a quelque chose en toi que tu as découvert seule, sans que personne te l'ait montré ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps4","type":"textarea","text":"La légèreté qu'on associe parfois aux benjamins, tu la vis comme une liberté ou parfois comme un manque de prise au sérieux ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps5","type":"textarea","text":"Est-ce qu'il y a des choses que tu as observées, apprises, retenues en regardant les autres avant toi, sans jamais le dire ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps6","type":"textarea","text":"Comment tu gères le fait d'être parfois vue comme 'la petite' alors que tu es bien plus que ça ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps7","type":"textarea","text":"Est-ce qu'il y a un moment où tu as réalisé que tu avais ta propre voix, ta propre direction, indépendamment de ce qu'on attendait de toi ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps8","type":"textarea","text":"Est-ce que tu as parfois l'impression de devoir mériter ta place autant que les autres, même si elle était déjà la tienne ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps9","type":"textarea","text":"Qu'est-ce que tu aimerais que les gens retiennent de toi, pas de ton rang, juste de toi ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"ps10","type":"textarea","text":"C'est quoi la force en toi dont tu parles le moins mais qui t'a le plus aidée ?","placeholder":"Prends le temps qu'il te faut..."}],"petit-frere":[{"id":"pf1","type":"textarea","text":"Est-ce que tu as parfois eu du mal à lire ce que les hommes autour de toi vivaient vraiment ? Comment tu as construit tes propres repères ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf2","type":"textarea","text":"Est-ce qu'il y a eu un moment où tu as réalisé que tu allais devoir tracer ton propre chemin, même sans carte ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf3","type":"textarea","text":"Comment tu gardes confiance en toi dans un monde qui peut être difficile à décrypter ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf4","type":"textarea","text":"Qu'est-ce que tu as découvert sur ta propre force que les autres n'ont peut-être pas encore vu ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf5","type":"textarea","text":"Est-ce que réussir a un sens particulier pour toi ? Qu'est-ce que ça représente profondément ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf6","type":"textarea","text":"Est-ce qu'il t'est arrivé de porter des douleurs ou des questions en silence parce qu'il n'y avait personne à qui les adresser ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf7","type":"textarea","text":"Comment tu as appris à faire confiance à ton propre jugement quand les modèles autour de toi n'étaient pas clairs ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf8","type":"textarea","text":"Est-ce qu'il y a une décision de ta vie dont tu es vraiment fier, que tu as prise pour toi, pas pour plaire à quelqu'un ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf9","type":"textarea","text":"Comment tu définis ta place dans le monde, pas seulement dans ta famille ? C'est quoi ton ancrage ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"pf10","type":"textarea","text":"Si tu avais un message à envoyer à tous les petits frères qui se sentent seuls dans leur construction, ce serait quoi ?","placeholder":"Prends le temps qu'il te faut..."}],"fils-unique":[{"id":"fu1","type":"textarea","text":"Est-ce que la solitude et la sérénité sont deux choses que tu distingues facilement, ou est-ce qu'elles se mélangent parfois ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu2","type":"textarea","text":"Comment tu as géré les attentes que tu portais seul, sans pouvoir les partager avec un frère ou une sœur ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu3","type":"textarea","text":"Est-ce que tu as parfois imaginé ce que ce serait d'avoir un frère ou une sœur ? Qu'est-ce que tu penses que ça t'aurait donné ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu4","type":"textarea","text":"Qu'est-ce que tu as développé de particulier dans ta relation aux autres, en dehors de la famille ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu5","type":"textarea","text":"Est-ce que l'amour et l'attention que tu as reçus t'ont parfois paru intenses à porter ? Comment tu as trouvé ton équilibre ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu6","type":"textarea","text":"Comment tu as construit ton sentiment d'appartenance, à ta famille, mais aussi à quelque chose de plus grand ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu7","type":"textarea","text":"Est-ce qu'il y a quelque chose que tu n'as jamais pu partager avec quelqu'un qui comprend vraiment, parce que tu n'avais pas ce miroir fraternel ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu8","type":"textarea","text":"Comment tu vis les conflits, les désaccords ? Est-ce que le fait d'être fils unique a influencé ta façon de les traverser ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu9","type":"textarea","text":"Qu'est-ce que tu as appris sur toi dans les moments où tu étais vraiment seul, face à toi-même ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fu10","type":"textarea","text":"C'est quoi la chose dont tu es le plus fier d'avoir construite, à partir de ta propre singularité ?","placeholder":"Prends le temps qu'il te faut..."}],"fille-unique":[{"id":"fue1","type":"textarea","text":"Comment tu as navigué entre le fait d'être tout pour tes parents et le besoin d'exister pour toi-même ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue2","type":"textarea","text":"Est-ce que tu t'es construite plutôt en dehors de la famille, avec des amitiés ou des passions qui t'appartenaient vraiment ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue3","type":"textarea","text":"Est-ce que l'amour qu'on t'a donné t'a parfois semblé lourd à porter autant qu'il était précieux ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue4","type":"textarea","text":"Qu'est-ce que tu voudrais que les gens comprennent de ta réalité, quelque chose que personne ne voit vraiment de l'extérieur ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue5","type":"textarea","text":"Est-ce que tu as parfois ressenti le besoin d'une complice, d'une sœur imaginaire à qui parler ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue6","type":"textarea","text":"Comment tu décris ta relation à l'indépendance ? Est-ce que tu la vis facilement ou est-ce quelque chose que tu as dû conquérir ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue7","type":"textarea","text":"Est-ce qu'il y a une pression particulière liée à ton statut de fille unique que tu as dû nommer, dépasser, ou accepter ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue8","type":"textarea","text":"Comment tu vis les transitions, les moments de changement ? Tu as développé une façon à toi de les traverser ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue9","type":"textarea","text":"Qu'est-ce que la solitude t'a appris que la compagnie ne pouvait pas t'apprendre ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"fue10","type":"textarea","text":"Si tu pouvais te définir en une phrase, une seule, indépendamment de ta famille, ce serait quoi ?","placeholder":"Prends le temps qu'il te faut..."}],"jumeaux":[{"id":"jx1","type":"textarea","text":"Est-ce qu'il y a eu un moment où tu as commencé à te sentir vraiment une personne à part entière, distincte de l'autre ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx2","type":"textarea","text":"Est-ce que tu as une facette de toi que l'autre ne connaît pas, ou que tu gardes pour toi seul ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx3","type":"textarea","text":"Comment tu vis l'inévitable comparaison extérieure, et comment tu t'en protèges ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx4","type":"textarea","text":"C'est quoi quelque chose que tu n'as jamais dit à l'autre, mais que tu pourrais dire maintenant ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx5","type":"textarea","text":"Comment tu te définis, en dehors de la paire que vous formez ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx6","type":"textarea","text":"Est-ce qu'il y a des moments où tu as eu envie d'être vu uniquement pour toi, pas comme l'un des deux ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx7","type":"textarea","text":"Comment vous avez traversé les étapes importantes de la vie, les différences qui sont apparues entre vous ? Comment tu les as vécues ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx8","type":"textarea","text":"Est-ce que votre lien vous a donné une force particulière face au monde ? Comment tu la décrirais ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx9","type":"textarea","text":"Est-ce qu'il y a des rôles qui se sont installés naturellement entre vous, l'un plus protecteur, l'autre plus libre ? Comment tu vis ça ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jx10","type":"textarea","text":"Qu'est-ce que tu veux construire pour toi, que tu n'as pas encore vraiment commencé ?","placeholder":"Prends le temps qu'il te faut..."}],"jumelles":[{"id":"jf1","type":"textarea","text":"Est-ce qu'il y a eu un moment où tu as commencé à te sentir vraiment une personne à part entière, distincte de l'autre ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf2","type":"textarea","text":"Est-ce que tu as une facette de toi que l'autre ne connaît pas, ou que tu gardes pour toi seule ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf3","type":"textarea","text":"Comment tu vis l'inévitable comparaison extérieure, et comment tu t'en protèges ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf4","type":"textarea","text":"C'est quoi quelque chose que tu n'as jamais dit à l'autre, mais que tu pourrais dire maintenant ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf5","type":"textarea","text":"Comment tu te définis, en dehors de la paire que vous formez ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf6","type":"textarea","text":"Est-ce qu'il y a des moments où tu as eu envie d'être vue uniquement pour toi, pas comme l'une des deux ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf7","type":"textarea","text":"Comment vous avez traversé les étapes importantes de la vie, les différences qui sont apparues entre vous ? Comment tu les as vécues ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf8","type":"textarea","text":"Est-ce que votre lien vous a donné une force particulière face au monde ? Comment tu la décrirais ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf9","type":"textarea","text":"Est-ce qu'il y a des rôles qui se sont installés naturellement entre vous, l'une plus protectrice, l'autre plus libre ? Comment tu vis ça ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"jf10","type":"textarea","text":"Qu'est-ce que tu veux construire pour toi, que tu n'as pas encore vraiment commencé ?","placeholder":"Prends le temps qu'il te faut..."}],"cas-particulier":[{"id":"cp1","type":"textarea","text":"Est-ce que ta place dans ta famille s'est construite progressivement, comme une découverte, ou est-ce qu'elle t'a été donnée d'emblée ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp2","type":"textarea","text":"Est-ce qu'il y a des parties de ton histoire familiale que tu as dû digérer seul(e) avant de pouvoir en parler ? Comment tu t'en es sorti(e) ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp3","type":"textarea","text":"Qu'est-ce qui t'a aidé à construire un sentiment d'appartenance, même quand les choses étaient complexes ou floues ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp4","type":"textarea","text":"Comment tu fais la distinction entre ce qui t'a été transmis et ce que tu as choisi toi-même de garder ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp5","type":"textarea","text":"Est-ce que tu as parfois eu du mal à expliquer ta situation familiale aux autres, à trouver les mots ? Comment tu le vis aujourd'hui ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp6","type":"textarea","text":"Est-ce qu'il y a une douleur liée à ton histoire que tu as transformée en quelque chose de positif, même partiellement ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp7","type":"textarea","text":"Qu'est-ce que ta singularité familiale t'a appris sur la résilience, sur l'adaptation ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp8","type":"textarea","text":"Est-ce qu'il y a des personnes, hors famille, qui ont joué un rôle crucial dans ta construction ? Comment tu les portes en toi ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp9","type":"textarea","text":"Comment tu parles de ta famille à toi-même, dans ta tête ? Avec quelle tendresse, quelle distance, quel regard ?","placeholder":"Prends le temps qu'il te faut..."},{"id":"cp10","type":"textarea","text":"Si tu pouvais écrire une lettre à ta famille, passée ou présente, qu'est-ce que tu voudrais y mettre ?","placeholder":"Prends le temps qu'il te faut..."}]};
-var state={step:'welcome',pid:null,name:'',ans:{},qs:[],qi:0};
+var KEY = "a736fd6e-e12a-4fc4-9b57-621d0ce5d743";
+var PH = "Prends le temps qu'il te faut...";
+var PROFILES = [
+  {id:"grande-soeur",  lb:"Grande Soeur",     em:"👩",  msg:"Tu as porte beaucoup. Et tout ce que tu as donne aux autres ne t'a pas ete vole : ca t'a appris une profondeur que peu de gens ont."},
+  {id:"grand-frere",   lb:"Grand Frere",       em:"🧑",  msg:"Etre lisible n'est pas une obligation. Mais etre sincere avec toi-meme, c'est ta liberte la plus puissante."},
+  {id:"fille-milieu",  lb:"Fille du Milieu",   em:"🌸",  msg:"Ta place n'etait pas evidente, mais tu l'as creee. Ca, c'est une force rare."},
+  {id:"garcon-milieu", lb:"Garcon du Milieu",  em:"🌿",  msg:"Ce que tu as construit seul, sans bruit, sans podium, c'est peut-etre la chose la plus solide de toi."},
+  {id:"petite-soeur",  lb:"Petite Soeur",      em:"🌙",  msg:"Tu n'es pas la derniere, tu es l'aboutissement. Et tu as encore tout a ecrire."},
+  {id:"petit-frere",   lb:"Petit Frere",       em:"⚡",  msg:"Dans un monde sans boussole, tu as appris a en fabriquer une. C'est ca, etre un batisseur."},
+  {id:"fils-unique",   lb:"Fils Unique",       em:"🌊",  msg:"La profondeur que tu as developpee dans le silence et la solitude, elle n'attend que d'etre partagee avec le monde."},
+  {id:"fille-unique",  lb:"Fille Unique",      em:"✨",  msg:"Tu as grandi sous une lumiere intense. Maintenant tu apprends a te rechauffer aussi a ta propre flamme."},
+  {id:"jumeaux",       lb:"Jumeaux",           em:"👯",  msg:"Vous avez commence a deux. Mais chacun de vous est un univers complet. Les deux peuvent coexister."},
+  {id:"jumelles",      lb:"Jumelles",          em:"👯",  msg:"Vous avez commence a deux. Mais chacune de vous est un univers complet. Les deux peuvent coexister."},
+  {id:"cas-part",      lb:"Cas Particulier",   em:"🌟",  msg:"Ton histoire est complexe. Et cette complexite n'est pas un defaut : c'est la richesse de ta singularite."}
+];
+var OPENING = [
+  {id:"co1",sec:"Ouverture",type:"ta", text:"Si tu devais choisir une image, une couleur ou un son qui represente comment tu te sens dans ta famille en ce moment, ce serait quoi ?",ph:"Il n'y a pas de bonne reponse..."},
+  {id:"co2",sec:"Ouverture",type:"3w", text:"Quand tu penses a toi, pas a ton role ni a ce qu'on attend de toi... juste toi. Tu te decrirais en trois mots ?",ph:""},
+  {id:"co3",sec:"Ouverture",type:"ta", text:"Est-ce qu'il y a une version de toi que tu montres a ta famille, et une autre que tu gardes pour toi ? Laquelle tu preferes et pourquoi ?",ph:"Explore librement..."},
+  {id:"co4",sec:"Ouverture",type:"ta", text:"C'est quoi le moment de la semaine ou tu te sens le plus toi-meme, completement libre ?",ph:"Decris ce moment..."}
+];
+var CLOSING = [
+  {id:"cc1",sec:"Cloture",type:"ta", text:"C'est quoi une force en toi que tu n'utilises pas encore assez, et que tu voudrais developper ?",ph:PH},
+  {id:"cc2",sec:"Cloture",type:"ta", text:"Si cette conversation t'a mis(e) en lumiere sur quelque chose, c'est quoi ? Une seule chose.",ph:"Meme une petite chose compte..."},
+  {id:"cc3",sec:"Cloture",type:"ta", text:"Si ta vie etait un livre en cours d'ecriture, qu'est-ce que tu aimerais qu'on lise dans le prochain chapitre ?",ph:"Ecris le titre de ce chapitre si tu veux..."}
+];
+var PQ = {
+  "grande-soeur":[
+    {id:"gs1",text:"Est-ce qu'il y a des attentes que tu portais sur toi dont tu ne savais pas vraiment d'ou elles venaient ? Comment tu les as vecues interieurement ?"},
+    {id:"gs2",text:"A quel moment precis tu as decide, consciemment ou non, de prendre soin de toi, pas seulement des autres ?"},
+    {id:"gs3",text:"Est-ce qu'il t'est arrive de te sentir seule dans ta position, d'avoir eu besoin qu'on s'occupe aussi de toi sans oser le dire ?"},
+    {id:"gs4",text:"Comment tu decris la frontiere, dans ta vie, entre aimer et proteger et s'oublier soi-meme ?"},
+    {id:"gs5",text:"Est-ce qu'il y a quelque chose que tu as porte silencieusement pendant des annees et qui meritait d'etre dit a voix haute ?"},
+    {id:"gs6",text:"Comment tu te definis en dehors de ton role dans la famille ? C'est quoi ce que tu construis pour toi seule ?"},
+    {id:"gs7",text:"Est-ce que tu as parfois ressenti une forme de pression invisible liee au fait d'etre l'ainee ? Comment tu l'as geree ?"},
+    {id:"gs8",text:"Qu'est-ce que ta position t'a appris sur toi que tu n'aurais pas appris autrement ?"},
+    {id:"gs9",text:"Est-ce qu'il t'est arrive d'envier une legerete que tu voyais chez d'autres sans porter ce que tu portais ? Comment tu as vecu ca ?"},
+    {id:"gs10",text:"Si tu pouvais te parler a toi-meme a 10 ans, qu'est-ce que tu te dirais pour alleger ce chemin ?"}
+  ],
+  "grand-frere":[
+    {id:"gb1",text:"C'est quoi pour toi etre un grand frere dans un monde ou les modeles masculins sont souvent flous ou absents ?"},
+    {id:"gb2",text:"Est-ce qu'il y a des choses que tu as du apprendre seul, sans vraiment avoir quelqu'un a qui demander ? Comment tu t'en es sorti ?"},
+    {id:"gb3",text:"Est-ce que la force, pour toi, ca a toujours ete quelque chose de visible ? Ou est-ce que tu as decouvert d'autres formes de force en toi avec le temps ?"},
+    {id:"gb4",text:"Qu'est-ce que tu aurais voulu qu'on te dise plus souvent, qu'on ne t'a jamais dit ?"},
+    {id:"gb5",text:"Est-ce qu'il y a eu un moment ou tu t'es senti incompris dans ce que tu vivais, et ou tu as du faire semblant que ca allait ?"},
+    {id:"gb6",text:"Comment tu as construit tes propres reperes quand les modeles autour de toi n'etaient pas lisibles ou absents ?"},
+    {id:"gb7",text:"Est-ce qu'il t'est arrive de douter de ta place, de te demander si tu faisais les choses comme il fallait ?"},
+    {id:"gb8",text:"Qu'est-ce que tu as appris sur la vulnerabilite, sur le fait d'accepter de ne pas avoir toutes les reponses ?"},
+    {id:"gb9",text:"Est-ce que le fait d'etre l'aine a parfois pese sur ta liberte, sur les choix que tu as faits ou ceux que tu n'as pas ose faire ?"},
+    {id:"gb10",text:"Comment tu imagines la version de toi dans 10 ans, debarrassee de toutes les pressions exterieures ?"}
+  ],
+  "fille-milieu":[
+    {id:"fm1",text:"Est-ce que tu as parfois eu l'impression d'avoir du inventer ta place plutot que de la trouver naturellement ? Comment tu as fait ?"},
+    {id:"fm2",text:"Est-ce qu'il t'est arrive de te sentir invisible dans ta famille ? Si oui, comment tu y as repondu ?"},
+    {id:"fm3",text:"Quelles sont les qualites que tu as developpees que tu penses uniques a ta position et dont tu es fiere ?"},
+    {id:"fm4",text:"Ou est-ce que tu puises ta stabilite interieure quand tu te sens entre deux mondes ?"},
+    {id:"fm5",text:"Est-ce que tu as souvent joue un role de mediatrice ou de pacificatrice ? Comment tu as vecu ce role ?"},
+    {id:"fm6",text:"Est-ce qu'il y a quelque chose que tu aurais voulu que les gens autour de toi voient en toi, sans que tu aies besoin de le montrer toi-meme ?"},
+    {id:"fm7",text:"Comment tu fais la distinction entre ce que tu ressens vraiment et ce que tu crois devoir ressentir pour maintenir l'harmonie ?"},
+    {id:"fm8",text:"Est-ce qu'il y a un domaine de ta vie ou tu t'as vraiment affirmee, ou tu as dit : ici c'est moi, c'est mon espace ?"},
+    {id:"fm9",text:"Est-ce que ta position dans la fratrie t'a appris quelque chose sur l'adaptation, sur la flexibilite ? Comment tu le vis maintenant ?"},
+    {id:"fm10",text:"Si tu pouvais changer une seule chose de comment tu as ete percue dans ta famille, ce serait quoi ?"}
+  ],
+  "garcon-milieu":[
+    {id:"gm1",text:"Comment tu as trouve ton espace a toi dans la famille, quelque chose qui n'appartient qu'a toi ?"},
+    {id:"gm2",text:"Est-ce que tu as eu l'impression de devoir te battre pour etre entendu ? Si oui, qu'est-ce que ca t'a appris ?"},
+    {id:"gm3",text:"Est-ce qu'il y a une facon dont tu t'es defini que les gens autour de toi n'avaient pas encore vue, une surprise que tu leur as faite ?"},
+    {id:"gm4",text:"C'est quoi ta definition personnelle du succes, independamment du regard des autres ?"},
+    {id:"gm5",text:"Est-ce qu'il t'est arrive de te sentir coince entre des attentes contradictoires venant de differents cotes ?"},
+    {id:"gm6",text:"Comment tu as appris a tenir ta propre ligne dans un espace ou il fallait souvent negocier sa place ?"},
+    {id:"gm7",text:"Est-ce qu'il y a une partie de toi qui a mis du temps a s'exprimer, un talent, une passion que tu as longtemps gardee pour toi ?"},
+    {id:"gm8",text:"Comment tu vis la relation avec toi-meme, loin des dynamiques familiales ? Tu te connais bien ?"},
+    {id:"gm9",text:"Est-ce que ta position t'a rendu plus empathique, plus a l'ecoute des autres ? Comment tu le vis ?"},
+    {id:"gm10",text:"C'est quoi une chose que tu ferais differemment si tu pouvais revivre une periode de ta vie familiale ?"}
+  ],
+  "petite-soeur":[
+    {id:"ps1",text:"Est-ce que tu as souvent eu envie de te prouver quelque chose, pas aux autres, mais a toi-meme ?"},
+    {id:"ps2",text:"Quand tu penses a l'avenir, est-ce que tu te projettes librement, ou est-ce que tu te sens parfois dans un sillage trace par d'autres avant toi ?"},
+    {id:"ps3",text:"Est-ce qu'il y a quelque chose en toi que tu as decouvert seule, sans que personne te l'ait montre ?"},
+    {id:"ps4",text:"La legerete qu'on associe parfois aux benjamins, tu la vis comme une liberte ou parfois comme un manque de prise au serieux ?"},
+    {id:"ps5",text:"Est-ce qu'il y a des choses que tu as observees, apprises, retenues en regardant les autres avant toi, sans jamais le dire ?"},
+    {id:"ps6",text:"Comment tu geres le fait d'etre parfois vue comme la petite alors que tu es bien plus que ca ?"},
+    {id:"ps7",text:"Est-ce qu'il y a un moment ou tu as realise que tu avais ta propre voix, ta propre direction, independamment de ce qu'on attendait de toi ?"},
+    {id:"ps8",text:"Est-ce que tu as parfois l'impression de devoir meriter ta place autant que les autres, meme si elle etait deja la tienne ?"},
+    {id:"ps9",text:"Qu'est-ce que tu aimerais que les gens retiennent de toi, pas de ton rang, juste de toi ?"},
+    {id:"ps10",text:"C'est quoi la force en toi dont tu parles le moins mais qui t'a le plus aidee ?"}
+  ],
+  "petit-frere":[
+    {id:"pf1",text:"Est-ce que tu as parfois eu du mal a lire ce que les hommes autour de toi vivaient vraiment ? Comment tu as construit tes propres reperes ?"},
+    {id:"pf2",text:"Est-ce qu'il y a eu un moment ou tu as realise que tu allais devoir tracer ton propre chemin, meme sans carte ?"},
+    {id:"pf3",text:"Comment tu gardes confiance en toi dans un monde qui peut etre difficile a decrypter ?"},
+    {id:"pf4",text:"Qu'est-ce que tu as decouvert sur ta propre force que les autres n'ont peut-etre pas encore vu ?"},
+    {id:"pf5",text:"Est-ce que reussir a un sens particulier pour toi ? Qu'est-ce que ca represente profondement ?"},
+    {id:"pf6",text:"Est-ce qu'il t'est arrive de porter des douleurs ou des questions en silence parce qu'il n'y avait personne a qui les adresser ?"},
+    {id:"pf7",text:"Comment tu as appris a faire confiance a ton propre jugement quand les modeles autour de toi n'etaient pas clairs ?"},
+    {id:"pf8",text:"Est-ce qu'il y a une decision de ta vie dont tu es vraiment fier, que tu as prise pour toi, pas pour plaire a quelqu'un ?"},
+    {id:"pf9",text:"Comment tu definis ta place dans le monde, pas seulement dans ta famille ? C'est quoi ton ancrage ?"},
+    {id:"pf10",text:"Si tu avais un message a envoyer a tous les petits freres qui se sentent seuls dans leur construction, ce serait quoi ?"}
+  ],
+  "fils-unique":[
+    {id:"fu1",text:"Est-ce que la solitude et la serenite sont deux choses que tu distingues facilement, ou est-ce qu'elles se melangent parfois ?"},
+    {id:"fu2",text:"Comment tu as gere les attentes que tu portais seul, sans pouvoir les partager avec un frere ou une soeur ?"},
+    {id:"fu3",text:"Est-ce que tu as parfois imagine ce que ce serait d'avoir un frere ou une soeur ? Qu'est-ce que tu penses que ca t'aurait donne ?"},
+    {id:"fu4",text:"Qu'est-ce que tu as developpe de particulier dans ta relation aux autres, en dehors de la famille ?"},
+    {id:"fu5",text:"Est-ce que l'amour et l'attention que tu as recus t'ont parfois paru intenses a porter ? Comment tu as trouve ton equilibre ?"},
+    {id:"fu6",text:"Comment tu as construit ton sentiment d'appartenance, a ta famille, mais aussi a quelque chose de plus grand ?"},
+    {id:"fu7",text:"Est-ce qu'il y a quelque chose que tu n'as jamais pu partager avec quelqu'un qui comprend vraiment, parce que tu n'avais pas ce miroir fraternel ?"},
+    {id:"fu8",text:"Comment tu vis les conflits, les desaccords ? Est-ce que le fait d'etre fils unique a influence ta facon de les traverser ?"},
+    {id:"fu9",text:"Qu'est-ce que tu as appris sur toi dans les moments ou tu etais vraiment seul, face a toi-meme ?"},
+    {id:"fu10",text:"C'est quoi la chose dont tu es le plus fier d'avoir construite, a partir de ta propre singularite ?"}
+  ],
+  "fille-unique":[
+    {id:"fue1",text:"Comment tu as navigue entre le fait d'etre tout pour tes parents et le besoin d'exister pour toi-meme ?"},
+    {id:"fue2",text:"Est-ce que tu t'es construite plutot en dehors de la famille, avec des amities ou des passions qui t'appartenaient vraiment ?"},
+    {id:"fue3",text:"Est-ce que l'amour qu'on t'a donne t'a parfois semble lourd a porter autant qu'il etait precieux ?"},
+    {id:"fue4",text:"Qu'est-ce que tu voudrais que les gens comprennent de ta realite, quelque chose que personne ne voit vraiment de l'exterieur ?"},
+    {id:"fue5",text:"Est-ce que tu as parfois ressenti le besoin d'une complice, d'une soeur imaginaire a qui parler ?"},
+    {id:"fue6",text:"Comment tu decris ta relation a l'independance ? Est-ce que tu la vis facilement ou est-ce quelque chose que tu as du conquerir ?"},
+    {id:"fue7",text:"Est-ce qu'il y a une pression particuliere liee a ton statut de fille unique que tu as du nommer, depasser, ou accepter ?"},
+    {id:"fue8",text:"Comment tu vis les transitions, les moments de changement ? Tu as developpe une facon a toi de les traverser ?"},
+    {id:"fue9",text:"Qu'est-ce que la solitude t'a appris que la compagnie ne pouvait pas t'apprendre ?"},
+    {id:"fue10",text:"Si tu pouvais te definir en une phrase, une seule, independamment de ta famille, ce serait quoi ?"}
+  ],
+  "jumeaux":[
+    {id:"jx1",text:"Est-ce qu'il y a eu un moment ou tu as commence a te sentir vraiment une personne a part entiere, distincte de l'autre ?"},
+    {id:"jx2",text:"Est-ce que tu as une facette de toi que l'autre ne connait pas, ou que tu gardes pour toi seul ?"},
+    {id:"jx3",text:"Comment tu vis l'inevitable comparaison exterieure, et comment tu t'en proteges ?"},
+    {id:"jx4",text:"C'est quoi quelque chose que tu n'as jamais dit a l'autre, mais que tu pourrais dire maintenant ?"},
+    {id:"jx5",text:"Comment tu te definis, en dehors de la paire que vous formez ?"},
+    {id:"jx6",text:"Est-ce qu'il y a des moments ou tu as eu envie d'etre vu uniquement pour toi, pas comme l'un des deux ?"},
+    {id:"jx7",text:"Comment vous avez traverse les etapes importantes de la vie, les differences qui sont apparues entre vous ? Comment tu les as vecues ?"},
+    {id:"jx8",text:"Est-ce que votre lien vous a donne une force particuliere face au monde ? Comment tu la decrirais ?"},
+    {id:"jx9",text:"Est-ce qu'il y a des roles qui se sont installes naturellement entre vous, l'un plus protecteur, l'autre plus libre ? Comment tu vis ca ?"},
+    {id:"jx10",text:"Qu'est-ce que tu veux construire pour toi, que tu n'as pas encore vraiment commence ?"}
+  ],
+  "jumelles":[
+    {id:"jf1",text:"Est-ce qu'il y a eu un moment ou tu as commence a te sentir vraiment une personne a part entiere, distincte de l'autre ?"},
+    {id:"jf2",text:"Est-ce que tu as une facette de toi que l'autre ne connait pas, ou que tu gardes pour toi seule ?"},
+    {id:"jf3",text:"Comment tu vis l'inevitable comparaison exterieure, et comment tu t'en proteges ?"},
+    {id:"jf4",text:"C'est quoi quelque chose que tu n'as jamais dit a l'autre, mais que tu pourrais dire maintenant ?"},
+    {id:"jf5",text:"Comment tu te definis, en dehors de la paire que vous formez ?"},
+    {id:"jf6",text:"Est-ce qu'il y a des moments ou tu as eu envie d'etre vue uniquement pour toi, pas comme l'une des deux ?"},
+    {id:"jf7",text:"Comment vous avez traverse les etapes importantes de la vie, les differences qui sont apparues entre vous ? Comment tu les as vecues ?"},
+    {id:"jf8",text:"Est-ce que votre lien vous a donne une force particuliere face au monde ? Comment tu la decrirais ?"},
+    {id:"jf9",text:"Est-ce qu'il y a des roles qui se sont installes naturellement entre vous, l'une plus protectrice, l'autre plus libre ? Comment tu vis ca ?"},
+    {id:"jf10",text:"Qu'est-ce que tu veux construire pour toi, que tu n'as pas encore vraiment commence ?"}
+  ],
+  "cas-part":[
+    {id:"cp1",text:"Est-ce que ta place dans ta famille s'est construite progressivement, comme une decouverte, ou est-ce qu'elle t'a ete donnee d'emblee ?"},
+    {id:"cp2",text:"Est-ce qu'il y a des parties de ton histoire familiale que tu as du digerer seul(e) avant de pouvoir en parler ? Comment tu t'en es sorti(e) ?"},
+    {id:"cp3",text:"Qu'est-ce qui t'a aide a construire un sentiment d'appartenance, meme quand les choses etaient complexes ou floues ?"},
+    {id:"cp4",text:"Comment tu fais la distinction entre ce qui t'a ete transmis et ce que tu as choisi toi-meme de garder ?"},
+    {id:"cp5",text:"Est-ce que tu as parfois eu du mal a expliquer ta situation familiale aux autres, a trouver les mots ? Comment tu le vis aujourd'hui ?"},
+    {id:"cp6",text:"Est-ce qu'il y a une douleur liee a ton histoire que tu as transformee en quelque chose de positif, meme partiellement ?"},
+    {id:"cp7",text:"Qu'est-ce que ta singularite familiale t'a appris sur la resilience, sur l'adaptation ?"},
+    {id:"cp8",text:"Est-ce qu'il y a des personnes, hors famille, qui ont joue un role crucial dans ta construction ? Comment tu les portes en toi ?"},
+    {id:"cp9",text:"Comment tu parles de ta famille a toi-meme, dans ta tete ? Avec quelle tendresse, quelle distance, quel regard ?"},
+    {id:"cp10",text:"Si tu pouvais ecrire une lettre a ta famille, passee ou presente, qu'est-ce que tu voudrais y mettre ?"}
+  ]
+};
 
-function bq(pid){
-  var pqs=(PROFILE_QUESTIONS[pid]||[]).map(function(q){return Object.assign({},q,{section:'Exploration'});});
-  return COMMON_OPENING.concat(pqs,COMMON_CLOSING);
+var S = {step:"welcome", pid:null, name:"", ans:{}, qs:[], qi:0};
+
+function h(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
-function es(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function sc(s){
-  if(s==='Ouverture')return 'background:rgba(168,188,246,.12);color:#A8BCF6;border:1px solid rgba(168,188,246,.25)';
-  if(s==='Cloture')return 'background:rgba(223,156,106,.12);color:#DF9C6A;border:1px solid rgba(223,156,106,.25)';
-  return 'background:rgba(107,55,133,.12);color:#6B3785;border:1px solid rgba(107,55,133,.25)';
+function secStyle(s) {
+  if(s==="Ouverture") return "background:rgba(168,188,246,.12);color:#A8BCF6;border:1px solid rgba(168,188,246,.25)";
+  if(s==="Cloture")   return "background:rgba(223,156,106,.12);color:#DF9C6A;border:1px solid rgba(223,156,106,.25)";
+  return "background:rgba(107,55,133,.12);color:#6B3785;border:1px solid rgba(107,55,133,.25)";
 }
-function sca(q){
-  if(q.type==='three-words'){
-    return '<div class="tw">'+
-      '<input class="wi" id="a_'+q.id+'_1" type="text" placeholder="Mot 1" value="'+(state.ans[q.id+'_1']||'')+'">'+
-      '<input class="wi" id="a_'+q.id+'_2" type="text" placeholder="Mot 2" value="'+(state.ans[q.id+'_2']||'')+'">'+
-      '<input class="wi" id="a_'+q.id+'_3" type="text" placeholder="Mot 3" value="'+(state.ans[q.id+'_3']||'')+'"></div>';
+function buildQs(pid) {
+  var out = [];
+  OPENING.forEach(function(q){ out.push({id:q.id,sec:q.sec,type:q.type,text:q.text,ph:q.ph}); });
+  (PQ[pid]||[]).forEach(function(q){ out.push({id:q.id,sec:"Exploration",type:"ta",text:q.text,ph:PH}); });
+  CLOSING.forEach(function(q){ out.push({id:q.id,sec:q.sec,type:q.type,text:q.text,ph:q.ph}); });
+  return out;
+}
+function saveAns() {
+  var q = S.qs[S.qi]; if(!q) return;
+  if(q.type==="3w") {
+    ["_1","_2","_3"].forEach(function(s){
+      var el=document.getElementById("a_"+q.id+s); if(el) S.ans[q.id+s]=el.value;
+    });
+  } else {
+    var el=document.getElementById("a_"+q.id); if(el) S.ans[q.id]=el.value;
   }
-  return '<textarea class="at" id="a_'+q.id+'" rows="6" placeholder="'+es(q.placeholder||'Prends le temps...')+'">'+(state.ans[q.id]||'')+'</textarea>';
 }
-function saveA(){
-  var q=state.qs[state.qi];if(!q)return;
-  if(q.type==='three-words'){
-    ['_1','_2','_3'].forEach(function(s){var el=document.getElementById('a_'+q.id+s);if(el)state.ans[q.id+s]=el.value;});
-  }else{var el=document.getElementById('a_'+q.id);if(el)state.ans[q.id]=el.value;}
+function show(html) { document.getElementById("app").innerHTML=html; window.scrollTo(0,0); }
+function updProg() {
+  var pw=document.getElementById("prog");
+  if(S.step!=="q"){pw.style.display="none";return;}
+  pw.style.display="block";
+  var tot=S.qs.length, pct=Math.round(S.qi/tot*100);
+  document.getElementById("plbl").textContent="Question "+(S.qi+1)+" sur "+tot;
+  document.getElementById("ppct").textContent=pct+"%";
+  document.getElementById("pfill").style.width=pct+"%";
 }
-function rW(){
-  return '<div class="sc">'+
-    '<div style="text-align:center"><p class="ey">Interview · Dynamiques familiales</p>'+
-    '<h1 class="ht">Ta Place,<br>Ton Histoire,<br>Ta Lumière</h1></div>'+
-    '<div class="card">'+
-    '<p class="iq">“Comprendre d’où tu viens, c’est déjà choisir où tu vas.”</p>'+
-    '<p class="pa">Bienvenue dans cet espace d’écoute et de réflexion. Ce questionnaire explore ta place dans ta famille, comment tu t’es construit(e), et comment tu t’émancipes.</p>'+
-    '<p class="pa">Il n’y a ici ni bonne ni mauvaise réponse. Prends le temps qu’il te faut.</p>'+
-    '<p class="pa">Durée estimée : <strong style="color:#A8BCF6">30 minutes</strong>.</p>'+
-    '<button class="bp" onclick="gs('setup')">Commencer l’exploration →</button>'+
-    '</div></div>';
+
+function renderWelcome() {
+  S.step="welcome"; updProg();
+  show('<div class="screen">'
+    +'<div style="text-align:center"><p class="eyebrow">Interview · Dynamiques familiales</p>'
+    +'<h1 class="hero">Ta Place,<br>Ton Histoire,<br>Ta Lumiere</h1></div>'
+    +'<div class="card">'
+    +'<p class="iq">Comprendre d\'ou tu viens, c\'est deja choisir ou tu vas.</p>'
+    +'<p class="para">Bienvenue dans cet espace d\'ecoute et de reflexion. Ce questionnaire explore ta place dans ta famille, comment tu t\'es construit(e), et comment tu t\'emancipes.</p>'
+    +'<p class="para">Il n\'y a ici ni bonne ni mauvaise reponse. Prends le temps qu\'il te faut.</p>'
+    +'<p class="para">Duree estimee : <strong style="color:#A8BCF6">30 minutes</strong>.</p>'
+    +'<button class="bprim" onclick="renderSetup()">Commencer l\'exploration</button>'
+    +'</div></div>');
 }
-function rS(){
+
+function renderSetup() {
+  S.step="setup"; updProg();
   var btns=PROFILES.map(function(p){
-    var s=state.pid===p.id?' sel':'';
-    return '<button class="pb'+s+'" onclick="sp(''+p.id+'')"><div class="pi">'+p.emoji+'</div><div class="pn">'+es(p.label)+'</div></button>';
-  }).join('');
-  return '<div class="sc" style="padding-top:2rem">'+
-    '<h2 class="sh">Avant de commencer</h2>'+
-    '<p class="pa" style="margin-bottom:2rem">Ces informations personnalisent l’expérience pour toi.</p>'+
-    '<label class="fl">Ton prénom</label>'+
-    '<input class="ti" id="un" type="text" placeholder="Comment tu t’appelles ?" value="'+es(state.name)+'" autocomplete="off">'+
-    '<label class="fl">Ton profil dans la fratrie</label>'+
-    '<div class="pg">'+btns+'</div>'+
-    '<p class="eh" id="pe">Merci de sélectionner ton profil.</p>'+
-    '<div class="nr">'+
-    '<button class="btn bb" onclick="gs('welcome')">← Retour</button>'+
-    '<button class="btn bn" onclick="sq()">Continuer →</button>'+
-    '</div></div>';
+    var cls=S.pid===p.id?" on":"";
+    return '<button class="pbtn'+cls+'" onclick="pickProfile(\''+p.id+'\')"><div class="pi">'+p.em+'</div><div class="pn">'+h(p.lb)+'</div></button>';
+  }).join("");
+  show('<div class="screen">'
+    +'<h2 class="sh">Avant de commencer</h2>'
+    +'<p class="para" style="margin-bottom:2rem">Ces informations personnalisent l\'experience pour toi.</p>'
+    +'<label class="lbl">Ton prenom</label>'
+    +'<input class="txt-in" id="nin" type="text" placeholder="Comment tu t\'appelles ?" value="'+h(S.name)+'" autocomplete="off">'
+    +'<label class="lbl">Ton profil dans la fratrie</label>'
+    +'<div class="pgrid">'+btns+'</div>'
+    +'<p class="errhint" id="perr">Merci de selectionner ton profil pour continuer.</p>'
+    +'<div class="nav">'
+    +'<button class="bback" onclick="renderWelcome()">Retour</button>'
+    +'<button class="bnext" onclick="startQs()">Continuer</button>'
+    +'</div></div>');
 }
-function rQ(){
-  var q=state.qs[state.qi],tot=state.qs.length,pct=Math.round(state.qi/tot*100);
-  var prev=state.qi===0
-    ?'<button class="btn bb" onclick="gs('setup')">← Précédent</button>'
-    :'<button class="btn bb" onclick="pq()">← Précédent</button>';
-  var next=state.qi===tot-1
-    ?'<button class="bs" id="sb" onclick="sf()">Envoyer mes réponses ✨</button>'
-    :'<button class="btn bn" onclick="nq()">Suivant →</button>';
-  return '<div class="pw"><div class="pm"><span>Question '+(state.qi+1)+' sur '+tot+'</span><span>'+pct+'%</span></div>'+
-    '<div class="pt"><div class="pf" style="width:'+pct+'%"></div></div></div>'+
-    '<div class="sc" style="padding-top:.5rem"><div class="card">'+
-    '<div class="qm"><span>Q'+(state.qi+1)+'/'+tot+'</span><span class="ql"></span>'+
-    '<span class="qb" style="'+sc(q.section)+'">'+q.section+'</span></div>'+
-    '<p class="qt">'+es(q.text)+'</p>'+sca(q)+'</div>'+
-    '<div id="fe" style="font-size:13px;color:#DF9C6A;margin-top:.75rem;display:none"></div>'+
-    '<div class="nr">'+prev+next+'</div></div>';
-}
-function rD(){
-  var p=PROFILES.find(function(x){return x.id===state.pid;});
-  return '<div class="sc" style="text-align:center;padding-top:4rem">'+
-    '<div style="font-size:3.5rem;margin-bottom:1.5rem">🌿</div>'+
-    '<h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;background:linear-gradient(135deg,#A8BCF6,#DF9C6A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.25rem">Merci, '+es(state.name)+'.</h2>'+
-    '<p class="pa" style="max-width:440px;margin:0 auto 2rem">Tes réponses ont été envoyées avec soin. Ce que tu viens de partager a de la valeur. Prends un moment pour toi.</p>'+
-    '<div class="ic"><p class="il">Un message pour toi</p><blockquote class="iq2">'+es(p?p.msg:'')+'</blockquote></div>'+
-    '</div>';
-}
-function render(){
-  var app=document.getElementById('app');
-  if(state.step==='welcome')app.innerHTML=rW();
-  else if(state.step==='setup')app.innerHTML=rS();
-  else if(state.step==='questions')app.innerHTML=rQ();
-  else if(state.step==='done')app.innerHTML=rD();
-  window.scrollTo(0,0);
-}
-function gs(s){state.step=s;render();}
-function sp(pid){state.pid=pid;render();}
-function sq(){
-  var el=document.getElementById('un');if(el)state.name=el.value.trim();
-  if(!state.name){if(el)el.focus();return;}
-  if(!state.pid){var e=document.getElementById('pe');if(e)e.style.display='block';return;}
-  state.qs=bq(state.pid);state.qi=0;state.step='questions';render();
-}
-function pq(){saveA();state.qi--;render();}
-function nq(){saveA();state.qi++;render();}
-async function sf(){
-  saveA();
-  var btn=document.getElementById('sb');if(btn){btn.disabled=true;btn.textContent='Envoi...';}
-  var p=PROFILES.find(function(x){return x.id===state.pid;});
-  var msg='=== INTERVIEW FAMILLE ===
-Prenom : '+state.name+'
-Profil : '+(p?p.label:state.pid)+'
 
-';
-  state.qs.forEach(function(q,i){
-    msg+='--- Q'+(i+1)+' ['+q.section+'] ---
-'+q.text+'
-';
-    if(q.type==='three-words')msg+='Rep : '+(state.ans[q.id+'_1']||'')+' / '+(state.ans[q.id+'_2']||'')+' / '+(state.ans[q.id+'_3']||'')+'
+function pickProfile(pid) {
+  var el=document.getElementById("nin"); if(el) S.name=el.value;
+  S.pid=pid; renderSetup();
+}
+function startQs() {
+  var el=document.getElementById("nin"); if(el) S.name=el.value.trim();
+  if(!S.name){if(el)el.focus();return;}
+  if(!S.pid){var e=document.getElementById("perr");if(e)e.style.display="block";return;}
+  S.qs=buildQs(S.pid); S.qi=0; renderQ();
+}
 
-';
-    else msg+='Rep : '+(state.ans[q.id]||'(vide)')+'
+function renderQ() {
+  S.step="q"; updProg();
+  var q=S.qs[S.qi], tot=S.qs.length;
+  var inp;
+  if(q.type==="3w") {
+    inp='<div class="thr">'
+      +'<input class="win" id="a_'+q.id+'_1" type="text" placeholder="Mot 1" value="'+h(S.ans[q.id+"_1"]||"")+'">'
+      +'<input class="win" id="a_'+q.id+'_2" type="text" placeholder="Mot 2" value="'+h(S.ans[q.id+"_2"]||"")+'">'
+      +'<input class="win" id="a_'+q.id+'_3" type="text" placeholder="Mot 3" value="'+h(S.ans[q.id+"_3"]||"")+'"></div>';
+  } else {
+    inp='<textarea class="ata" id="a_'+q.id+'" rows="6" placeholder="'+h(q.ph)+'">'+h(S.ans[q.id]||"")+'</textarea>';
+  }
+  var prevBtn=S.qi===0
+    ?'<button class="bback" onclick="renderSetup()">Precedent</button>'
+    :'<button class="bback" onclick="prevQ()">Precedent</button>';
+  var nextBtn=S.qi===tot-1
+    ?'<button class="bsub" id="sbtn" onclick="submitForm()">Envoyer mes reponses</button>'
+    :'<button class="bnext" onclick="nextQ()">Suivant</button>';
+  show('<div class="screen"><div class="card">'
+    +'<div class="qmeta"><span>Q'+(S.qi+1)+'/'+tot+'</span><span class="qline"></span>'
+    +'<span class="qbadge" style="'+secStyle(q.sec)+'">'+q.sec+'</span></div>'
+    +'<p class="qtext">'+h(q.text)+'</p>'
+    +inp+'</div>'
+    +'<p class="ferr" id="ferr"></p>'
+    +'<div class="nav">'+prevBtn+nextBtn+'</div></div>');
+}
 
-';
+function prevQ(){ saveAns(); S.qi--; renderQ(); }
+function nextQ(){ saveAns(); S.qi++; renderQ(); }
+
+async function submitForm() {
+  saveAns();
+  var btn=document.getElementById("sbtn");
+  if(btn){btn.disabled=true;btn.textContent="Envoi en cours...";}
+  var p=PROFILES.find(function(x){return x.id===S.pid;});
+  var msg="INTERVIEW FAMILLE\nPrenom : "+S.name+"\nProfil : "+(p?p.lb:S.pid)+"\n\n";
+  S.qs.forEach(function(q,i){
+    msg+="Q"+(i+1)+" ["+q.sec+"] "+q.text+"\n";
+    if(q.type==="3w") msg+="Rep : "+(S.ans[q.id+"_1"]||"")+" / "+(S.ans[q.id+"_2"]||"")+" / "+(S.ans[q.id+"_3"]||"")+"\n\n";
+    else msg+="Rep : "+(S.ans[q.id]||"(vide)")+"\n\n";
   });
-  try{
-    var r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'Interview Famille - '+(p?p.label:'')+' - '+state.name,from_name:state.name,message:msg})});
+  try {
+    var r=await fetch("https://api.web3forms.com/submit",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({access_key:KEY,subject:"Interview - "+(p?p.lb:"")+" - "+S.name,from_name:S.name,message:msg})
+    });
     var d=await r.json();
-    if(d.success){state.step='done';render();}else throw new Error(d.message);
-  }catch(e){
-    var fe=document.getElementById('fe');if(fe){fe.style.display='block';fe.textContent='Erreur. Vérifie ta connexion et réessaie.';}
-    if(btn){btn.disabled=false;btn.textContent='Réessayer →';}
+    if(d.success) renderDone();
+    else throw new Error(d.message||"Erreur serveur");
+  } catch(e) {
+    var fe=document.getElementById("ferr");
+    if(fe){fe.style.display="block";fe.textContent="Erreur : "+e.message;}
+    if(btn){btn.disabled=false;btn.textContent="Reessayer";}
   }
 }
-try { render(); } catch(e) {
-  var a = document.getElementById('app');
-  if(a) a.innerHTML = '<div style="color:#DF9C6A;padding:2rem;font-family:sans-serif">Erreur JS: ' + e.message + '</div>';
+
+function buildRecapHTML() {
+  var p=PROFILES.find(function(x){return x.id===S.pid;});
+  var now=new Date().toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"});
+  var secs={Ouverture:[],Exploration:[],Cloture:[]};
+  S.qs.forEach(function(q){
+    var sec=q.sec;
+    var ans=q.type==="3w"
+      ?[(S.ans[q.id+"_1"]||""),(S.ans[q.id+"_2"]||""),(S.ans[q.id+"_3"]||"")].filter(Boolean).join(" / ")
+      :(S.ans[q.id]||"");
+    if(secs[sec]) secs[sec].push({text:q.text,ans:ans});
+  });
+  var cols={Ouverture:"#A8BCF6",Exploration:"#9B5BBD",Cloture:"#DF9C6A"};
+  var body="";
+  ["Ouverture","Exploration","Cloture"].forEach(function(sec){
+    var items=secs[sec]; if(!items||!items.length) return;
+    var c=cols[sec];
+    body+='<div style="margin-bottom:3rem">';
+    body+='<h2 style="font-size:.85rem;font-weight:400;color:'+c+';letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid '+c+'55;padding-bottom:.75rem;margin-bottom:1.75rem">'+sec+'</h2>';
+    items.forEach(function(item){
+      body+='<div style="margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid rgba(255,255,255,.06)">';
+      body+='<p style="font-family:Georgia,serif;font-size:1.1rem;color:#E8E2DB;line-height:1.5;margin-bottom:.75rem">'+h(item.text)+'</p>';
+      if(item.ans) body+='<p style="color:#C5BFB8;font-size:.9rem;line-height:1.85;white-space:pre-wrap">'+h(item.ans)+'</p>';
+      else body+='<p style="color:rgba(255,255,255,.2);font-size:.85rem;font-style:italic">pas de reponse</p>';
+      body+='</div>';
+    });
+    body+='</div>';
+  });
+  return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">'
+    +'<title>Mon recap - '+h(S.name)+'</title>'
+    +'<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">'
+    +'<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#090C0B;color:#F0EBE3;font-family:Inter,sans-serif;padding:3rem 1.5rem;line-height:1.7}.page{max-width:680px;margin:0 auto}'
+    +'@media print{.noprint{display:none!important}body{background:#fff;color:#111}}'
+    +'</style></head><body><div class="page">'
+    +'<div style="text-align:center;margin-bottom:3.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.09)">'
+    +'<p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#DF9C6A;margin-bottom:1rem">Interview · Dynamiques familiales</p>'
+    +'<h1 style="font-family:\'Cormorant Garamond\',serif;font-size:3rem;font-weight:300;background:linear-gradient(140deg,#A8BCF6,#DF9C6A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem">'+h(S.name)+'</h1>'
+    +'<p style="color:#8A857F;font-size:.9rem">'+h(p?p.lb:"")+'  /  '+now+'</p>'
+    +'</div>'
+    +body
+    +'<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-left:3px solid #DF9C6A;border-radius:16px;padding:1.75rem 2rem;margin-bottom:2.5rem">'
+    +'<p style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#DF9C6A;margin-bottom:.75rem">Un message pour toi</p>'
+    +'<blockquote style="font-family:\'Cormorant Garamond\',serif;font-size:1.15rem;font-style:italic;color:#F0EBE3;line-height:1.7">'+h(p?p.msg:"")+'</blockquote>'
+    +'</div>'
+    +'<div class="noprint" style="text-align:center">'
+    +'<p style="color:#8A857F;font-size:.8rem;margin-bottom:.75rem">Pour sauvegarder en PDF : Ctrl+P puis "Enregistrer en PDF"</p>'
+    +'<button onclick="window.print()" style="padding:.875rem 2rem;background:linear-gradient(135deg,#2B544E,#6B3785);color:#fff;border:none;border-radius:12px;font-family:Inter,sans-serif;font-size:.9rem;cursor:pointer">Imprimer / Sauvegarder en PDF</button>'
+    +'</div></div></body></html>';
 }
-document.addEventListener('DOMContentLoaded', function() {
-  var a = document.getElementById('app');
-  if(a && a.children.length === 0) {
-    try { render(); } catch(e2) {
-      a.innerHTML = '<div style="color:#DF9C6A;padding:2rem;font-family:sans-serif">Erreur JS: ' + e2.message + '</div>';
-    }
-  }
-});
+
+function downloadRecap() {
+  var html=buildRecapHTML();
+  var blob=new Blob([html],{type:"text/html;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url; a.download="recap-"+S.name.toLowerCase().replace(/\s+/g,"-")+".html";
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function renderDone() {
+  S.step="done"; updProg();
+  var p=PROFILES.find(function(x){return x.id===S.pid;});
+  show('<div class="screen" style="padding-top:3rem">'
+    +'<div style="text-align:center;margin-bottom:2rem">'
+    +'<div style="font-size:3.5rem;margin-bottom:1.5rem">🌿</div>'
+    +'<h2 class="tytitle">Merci, '+h(S.name)+'.</h2>'
+    +'<p class="para" style="max-width:440px;margin:0 auto">Tes reponses ont ete envoyees. Ce que tu viens de partager a de la valeur.</p>'
+    +'</div>'
+    +'<div class="insp"><p class="insplbl">Un message pour toi</p>'
+    +'<blockquote class="inspq">'+h(p?p.msg:"")+'</blockquote></div>'
+    +'<div style="margin-top:1.5rem;background:rgba(168,188,246,.07);border:1px solid rgba(168,188,246,.2);border-radius:20px;padding:1.75rem 2rem">'
+    +'<p style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#A8BCF6;margin-bottom:.5rem">Ton recapitulatif personnel</p>'
+    +'<p class="para" style="margin-bottom:1.25rem;font-size:.88rem">Toutes tes reponses dans un document a garder pour toi. Tu peux aussi l\'imprimer en PDF.</p>'
+    +'<button class="bnext" style="width:100%;border-radius:14px;padding:1rem" onclick="downloadRecap()">Telecharger mon recap</button>'
+    +'</div></div>');
+}
+
+document.addEventListener("DOMContentLoaded", function(){ renderWelcome(); });
 </script>
 </body>
 </html>
